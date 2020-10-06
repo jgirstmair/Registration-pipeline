@@ -8,6 +8,7 @@ This project tries to perform batch registration of embryos.
 - [ ] Fix the 16 bit auto conversion in Isotropic Sampling in Python (Keep 8 bit)
 - [x] Perform 3D pre-rotation in Fiji
 - [ ] Perform 3D pre-rotation in Python
+- [ ] Do not save isotropic as RGB
 
 
 
