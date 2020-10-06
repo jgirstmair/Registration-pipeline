@@ -1,3 +1,17 @@
+This project tries to perform batch registration of embryos.
+
+
+### TODOs
+
+- [ ] Perform isotropic resolution of sample
+- [x] Perform 3D pre-rotation in Fiji
+- [ ] Perform 3D pre-rotation in Python
+
+
+
+
+
+
 # SimpleITK Notebooks
 [![CircleCI](https://circleci.com/gh/InsightSoftwareConsortium/SimpleITK-Notebooks/tree/master.svg?style=svg)](https://circleci.com/gh/InsightSoftwareConsortium/SimpleITK-Notebooks/tree/master)
 
