@@ -9,6 +9,8 @@ This project tries to perform batch registration of embryos.
 - [x] Perform 3D pre-rotation in Fiji
 - [ ] Perform 3D pre-rotation in Python
 - [x] Do not save isotropic as RGB
+- [x] Apply modification to bring to canonical orientation
+- [ ] Set the final size such that the warped image is centred on the specimen
 
 
 
