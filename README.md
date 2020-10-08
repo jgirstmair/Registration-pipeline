@@ -3,12 +3,14 @@ This project tries to perform batch registration of embryos.
 
 ### TODOs
 
-- [ ] Perform isotropic resolution of sample
-- [ ] Read Pixel Size form Image in Python
-- [ ] Fix the 16 bit auto conversion in Isotropic Sampling in Python (Keep 8 bit)
+- [x] Perform isotropic resolution of sample
+- [x] Read Pixel Size form Image in Python
+- [x] Fix the 16 bit auto conversion in Isotropic Sampling in Python (Keep 8 bit)
 - [x] Perform 3D pre-rotation in Fiji
 - [ ] Perform 3D pre-rotation in Python
-- [ ] Do not save isotropic as RGB
+- [x] Do not save isotropic as RGB
+- [x] Apply modification to bring to canonical orientation
+- [ ] Set the final size such that the warped image is centred on the specimen
 
 
 
