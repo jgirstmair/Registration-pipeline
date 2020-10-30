@@ -7,81 +7,38 @@ This project tries to perform batch registration of embryos.
 - [x] Read Pixel Size form Image in Python
 - [x] Fix the 16 bit auto conversion in Isotropic Sampling in Python (Keep 8 bit)
 - [x] Perform 3D pre-rotation in Fiji
-- [ ] Perform 3D pre-rotation in Python
+- [x] Perform 3D pre-rotation in Python
 - [x] Do not save isotropic as RGB
 - [x] Apply modification to bring to canonical orientation
-- [ ] Set the final size such that the warped image is centred on the specimen
+- [x] Set the final size such that the warped image is centred on the specimen
+- [x] Turn head to a consistent side (done with the intensity of *phalloidin* detections)
+- [x] For pre-registration, write a batch script to process all files
+- [ ] Use detections only once (currently, for the head consistent alignment, we detect them again)
+- [ ] Extend current python script to batch-process rigid and FFD registration
+- [ ] Establish Averaging Pipeline
+- [ ] Not all `Macrostomum` are perfectly aligned (~ 5/15: were aligned vertically with random head position)
+- [ ] Investigate some outlier filtering for detections before doing PCA
+- [ ] Produce results on larva (more spherical with lobes)
+- [ ] Perform alignment using keypoint detection (pose estimation) on larvae (for example, see [this](https://www.nature.com/articles/s41593-018-0209-y))
+- [ ] Perform Noise2Void on all noisy images
+- [ ] Grow Images by 1.3 (currently set to 1.2) 
+- [ ] Rotate randomly and check if you can recover the correct alignment. First test failed.
+- [ ] PCA rotation matrix and the pre-registration should be applied on the original (not down-sampled) images.
 
+### Learnings
 
+- First vector of PCA does correpsond to longest axis or axis of largest variance, but it is senstive to outliers. We noticed that with `Macrostomum`, the `DAPI` channel didn't perfrom so well because of the outliers - hence, we switched to `Phalloidin` for detections and PCA.
 
+- To get a consistent detection ogf head, we tried some algorithms - but what worked the best finally was using the intensity at detections. We use the center plane at the specimen center and compare the intensities on the left and right (this shoudl correspond to the AP-axis) and should gve a bias along all bilaterians. Note that for `echinoplana`, the pharynx lies closer to the trunk while for the `macrostomum`, it is closer to the head, hence the algorithm is flipped but consistent. Also, it seems to work with DAPI in `echnioplana`.
 
+- To apply the transformation matrix from PCA, we ralised that the rotation should occur around the embryo centre. [This](https://simpleitk.readthedocs.io/en/v1.2.4/Documentation/docs/source/fundamentalConcepts.html) page explains how the transformation is done 
 
+- We expect the rigid registration to work perfect. 
 
-# SimpleITK Notebooks
-[![CircleCI](https://circleci.com/gh/InsightSoftwareConsortium/SimpleITK-Notebooks/tree/master.svg?style=svg)](https://circleci.com/gh/InsightSoftwareConsortium/SimpleITK-Notebooks/tree/master)
+- We also noticed that using the nervous system channel performs 100 % correctly for `echninoplana` and performs at 12/16 on `macrostomum`. The fact that the nervous system shows higher intensity in the brain can be used to align the head consistently. 
 
-[SimpleITK](https://itk.org/Wiki/SimpleITK) is an abstraction layer and wrapper around the Insight Segmentation and Registration Toolkit [(ITK)](http://www.itk.org). It is available in the following programming languages: C++, Python, R, Java, C#, Lua, Tcl and Ruby.
+#### Important files
 
-This repository contains a collection of Jupyter Notebooks illustrating the use of SimpleITK for educational and research activities. The notebooks demonstrate the use of SimpleITK for interactive image analysis using the Python and R programming languages.
+- python/Registration_Pipeline_macrostomum.ipynb
+- python/pythonScripts/preregisterAnimals.py
 
-The repository and its contents can be used for:
-1. Learning SimpleITK.
-2. As a basis for your teaching activities.
-3. As a basis for your research activities.
-
-For the latter two use cases you can take advantage of the the repository's infrastructure which supports remote data downloads and notebook testing. These readily facilitate collaborative research.
-
-The animation below is a visualization of a rigid CT/MR registration process
-created with SimpleITK and Python (the [script](Utilities/intro_animation.py) used to generate the frames for the animated gif is found in the repository's Utilities directory).
-
-![](registration_visualization.gif)
-
-# Getting Started
-
-Note that currently SimpleITK with R is only available on Linux and Mac.
-
-1. Language specific details for installing the notebooks is given in the README files in the respective directories ([Python](Python/README.md), [R](R/README.md)). For general information about installing SimpleITK please see the [SimpleITK read-the-docs](https://simpleitk.readthedocs.io/en/master/) pages.
-
-2. The [SimpleITK API documentation](https://itk.org/SimpleITKDoxygen/html/index.html) is based on the C++ implementation which is readily mapped to your language of choice.
-
-3. Learn the general concepts underlying the implementations of segmentation and registration by reading the ([ITK book](https://itk.org/ItkSoftwareGuide)). The relevant portion is "Book 2: Design and Functionality". The ITK API is significantly different from the SimpleITK one, but the general concepts are the same (e.g. combination of optimizer and similarity metric for registration).     
-
-# Kicking the Tires
-
-Before you clone the repository to your computer you may want to try it out, kick the tires so to speak.
-
-Thanks to the awesome people from the [Binder Project](https://github.com/jupyterhub/binderhub)
-you can try out the Python notebooks without installing a thing.
-
-Some caveats:
-
-1. This free service is currently in beta, so may not always be available.
-2. Some of our notebooks require significant computational
-   resources which may not be available.
-3. All cells that use the sitk.Show() command will generate an exception because they
-   require a Fiji installation. Either ignore this or modify the code
-   for the session.
-
-After you launch binder, go to the Python directory and select the notebook of interest:
-
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/InsightSoftwareConsortium/SimpleITK-Notebooks/master)
-
-# Contributions from the Community
-
-We encourage contributions from the community!!!
-
-1. Ask questions on the [ITK discourse](https://discourse.itk.org/).
-2. Report issues you encounter (compatibility/bugs) using the
-   [GitHub issue reporting system](https://guides.github.com/features/issues/).
-2. Contribute code ([instructions](CONTRIBUTING.md)):
-   1. bug fixes.
-   2. improved versions of existing notebooks, both text and code.
-   3. new notebooks.
-
-# How to Cite
-
-If you find these notebooks or the notebook testing infrastructure useful in your research, support our efforts by citing it as:
-
-Z. Yaniv, B. C. Lowekamp, H. J. Johnson, R. Beare, "SimpleITK Image-Analysis Notebooks: a Collaborative Environment for Education and Reproducible Research", J Digit Imaging., https://doi.org/10.1007/s10278-017-0037-8, 31(3): 290-303, 2018.
-
-If you are interested in the details, you can freely read the paper [here](http://em.rdcu.be/wf/click?upn=KP7O1RED-2BlD0F9LDqGVeSIWDx8-2B-2B8r81HkSA5fUW53U-3D_kZYp45lAKoeuSXKlMMKnLRu-2FO1jcvtAwo2UFz30PH9bPLAejS1IjjDkfGx8EIWfnvmrgAH2RF3xvrb1fezqultdVNEEAM7Fc2RGY-2BOVhjR-2BAN-2B7Wi6qUoM6BYtn1ZWsTzFdNZQxBXXJ2Nf0BaU5NhQLQVs2hoM2TXsKZ7pnKQXZVJEAOyLbQSvZkJOvdc7Gk36rdNDa3pn5vH17-2FvszYj4mKlZlgROxTE-2Be2yQ-2FOLAYsoDHZNvVuG4vJr4xNpQnmAI16Nz8h3GJi-2F9GKnpBsAg-3D-3D.).
