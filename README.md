@@ -33,6 +33,6 @@ This project tries to perform batch registration of embryos.
 
 - We expect the rigid registration to work perfect. 
 
-- We also noticed that using the nervous system channel performs 100 % correctly for `echniplana` and perfroms at 12/16 on `macrostomum`. The fact that the nervous system shows higher intensity in the brain can be used to align the head consistently. 
+- We also noticed that using the nervous system channel performs 100 % correctly for `echninoplana` and perfroms at 12/16 on `macrostomum`. The fact that the nervous system shows higher intensity in the brain can be used to align the head consistently. 
 
 
