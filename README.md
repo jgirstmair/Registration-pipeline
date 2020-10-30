@@ -20,8 +20,9 @@ This project tries to perform batch registration of embryos.
 - [ ] Investigate some outlier filtering for detections before doing PCA
 - [ ] Produce results on larva (more spherical with lobes)
 - [ ] Perform alignment using keypoint detection (pose estimation) on larvae (for example, see [this](https://www.nature.com/articles/s41593-018-0209-y))
-- [ ] perform Noise2Void on all noisy images
-
+- [ ] Perform Noise2Void on all noisy images
+- [ ] Grow Images by 1.3 (currently set to 1.2) 
+- [ ] Rotate randomly and check if you can recover the correct alignment
 
 ### Learnings
 
@@ -33,6 +34,6 @@ This project tries to perform batch registration of embryos.
 
 - We expect the rigid registration to work perfect. 
 
-- We also noticed that using the nervous system channel performs 100 % correctly for `echninoplana` and perfroms at 12/16 on `macrostomum`. The fact that the nervous system shows higher intensity in the brain can be used to align the head consistently. 
+- We also noticed that using the nervous system channel performs 100 % correctly for `echninoplana` and performs at 12/16 on `macrostomum`. The fact that the nervous system shows higher intensity in the brain can be used to align the head consistently. 
 
 
