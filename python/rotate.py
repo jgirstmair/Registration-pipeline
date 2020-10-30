@@ -3,7 +3,7 @@
 from numpy import zeros, ones, asarray
 from numpy.linalg import norm
 from math import pi
-from scipy.ndimage.filters import gaussian_laplace, minimum_filter
+from scipy.ndimage.filters import gaussian_laplace, minimum_filter, maximum_filter
 from operator import contains
 from functools import partial
 from itertools import filterfalse
@@ -13,11 +13,13 @@ def localMinima(data, threshold):
     from numpy import ones, nonzero, transpose
     print("threshold is", threshold)
     if threshold is not None:
-        peaks = data < threshold
+        peaks = data < threshold 
+        #peaks = data > threshold
     else:
         peaks = ones(data.shape, dtype=data.dtype)
 
-    peaks &= data == minimum_filter(data, size=(3,) * data.ndim)
+    peaks &= data == minimum_filter(data, size=(3,) * data.ndim) 
+    # peaks &= data == maximum_filter(data, size=(3,) * data.ndim)
     return transpose(nonzero(peaks))
 
 def blobLOG(data, scales=range(1, 10, 1), threshold=-30):
@@ -62,7 +64,8 @@ def findBlobs(img, scales=range(1, 10), threshold=30, max_overlap=0.05):
     from numpy import ones, triu, seterr
     old_errs = seterr(invalid='ignore')
 
-    peaks = blobLOG(img, scales=scales, threshold=-threshold)
+    peaks = blobLOG(img, scales=scales, threshold=-threshold) ### TODO
+    #peaks = blobLOG(img, scales=scales, threshold=+threshold)
     radii = peaks[:, 0]
     positions = peaks[:, 1:]
 
