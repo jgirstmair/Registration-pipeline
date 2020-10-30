@@ -23,6 +23,7 @@ This project tries to perform batch registration of embryos.
 - [ ] Perform Noise2Void on all noisy images
 - [ ] Grow Images by 1.3 (currently set to 1.2) 
 - [ ] Rotate randomly and check if you can recover the correct alignment. First test failed.
+- [ ] PCA rotation matrix and the pre-registration should be applied on the original (not down-sampled) images.
 
 ### Learnings
 
