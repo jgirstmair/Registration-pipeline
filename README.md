@@ -24,6 +24,8 @@ This project tries to perform batch registration of embryos.
 - [ ] Grow Images by 1.3 (currently set to 1.2) 
 - [ ] Rotate randomly and check if you can recover the correct alignment. First test failed.
 - [ ] PCA rotation matrix and the pre-registration should be applied on the original (not down-sampled) images.
+- [ ] Work on Bruno's data. 
+- [ ] Register all `phalloidin` to some `Phalloidin` source image for `Echinoplana` 
 
 ### Learnings
 
