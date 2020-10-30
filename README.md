@@ -22,7 +22,7 @@ This project tries to perform batch registration of embryos.
 - [ ] Perform alignment using keypoint detection (pose estimation) on larvae (for example, see [this](https://www.nature.com/articles/s41593-018-0209-y))
 - [ ] Perform Noise2Void on all noisy images
 - [ ] Grow Images by 1.3 (currently set to 1.2) 
-- [ ] Rotate randomly and check if you can recover the correct alignment
+- [ ] Rotate randomly and check if you can recover the correct alignment. First test failed.
 
 ### Learnings
 
