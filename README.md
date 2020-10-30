@@ -37,4 +37,8 @@ This project tries to perform batch registration of embryos.
 
 - We also noticed that using the nervous system channel performs 100 % correctly for `echninoplana` and performs at 12/16 on `macrostomum`. The fact that the nervous system shows higher intensity in the brain can be used to align the head consistently. 
 
+#### Important files
+
+- python/Registration_Pipeline_macrostomum.ipynb
+- python/pythonScripts/preregisterAnimals.py
 
