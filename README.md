@@ -26,7 +26,9 @@ This project tries to perform batch registration of embryos.
 - [ ] PCA rotation matrix and the pre-registration should be applied on the original (not down-sampled) images.
 - [ ] Work on Bruno's data. 
 - [ ] Register all `phalloidin` to some `Phalloidin` source image for `Echinoplana` 
-
+- [ ] Investigate if the process of rotation generates empty background which confuses PCA (for skewed embryo)
+- [ ] Compare denoised images from cluster with the ones generated before ( Send images to Johannes )
+- [ ] Create first test of registering allneuropeptides againsta sensible source image.
 ### Learnings
 
 - First vector of PCA does correpsond to longest axis or axis of largest variance, but it is senstive to outliers. We noticed that with `Macrostomum`, the `DAPI` channel didn't perfrom so well because of the outliers - hence, we switched to `Phalloidin` for detections and PCA.
