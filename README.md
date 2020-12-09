@@ -29,6 +29,7 @@ This project tries to perform batch registration of embryos.
 - [ ] Investigate if the process of rotation generates empty background which confuses PCA (for skewed embryo)
 - [ ] Compare denoised images from cluster with the ones generated before ( Send images to Johannes )
 - [ ] Create first test of registering allneuropeptides againsta sensible source image.
+- [ ] See if normalization prior to PCA makes it more robust to outliers.
 ### Learnings
 
 - First vector of PCA does correpsond to longest axis or axis of largest variance, but it is senstive to outliers. We noticed that with `Macrostomum`, the `DAPI` channel didn't perfrom so well because of the outliers - hence, we switched to `Phalloidin` for detections and PCA.
