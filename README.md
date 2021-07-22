@@ -1,5 +1,7 @@
 This project tries to perform batch registration of embryos.
 
+<img src="https://user-images.githubusercontent.com/70565347/126686183-c9ce7a43-bb71-4208-a939-2758eccc998e.png" width=400>
+
 
 ### TODOs
 
