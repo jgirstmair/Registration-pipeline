@@ -21,7 +21,7 @@ This project tries to perform batch registration of embryos.
 - [ ] Produce results on larva (more spherical with lobes)
 - [ ] Perform alignment using keypoint detection (pose estimation) on larvae (for example, see [this](https://www.nature.com/articles/s41593-018-0209-y))
 - [ ] Perform Noise2Void on all noisy images
-- [ ] Grow Images by 1.3 (currently set to 1.2) 
+- [x] Grow Images by 1.3 (currently set to 1.2) 
 - [ ] Rotate randomly and check if you can recover the correct alignment. First test failed.
 - [ ] PCA rotation matrix and the pre-registration should be applied on the original (not down-sampled) images.
 - [ ] Work on Bruno's data. 
@@ -32,7 +32,9 @@ This project tries to perform batch registration of embryos.
 - [ ] See if normalization prior to PCA makes it more robust to outliers.
 ### Learnings
 
-- First vector of PCA does correpsond to longest axis or axis of largest variance, but it is senstive to outliers. We noticed that with `Macrostomum`, the `DAPI` channel didn't perfrom so well because of the outliers - hence, we switched to `Phalloidin` for detections and PCA.
+- Preregistration works betteron reference channel 1 (`phalloidin`). With `DAPI`, we have more variation and flipped left-right heads are more often wrong. 
+
+- First vector of PCA does correspond to longest axis or axis of largest variance, but it is senstive to outliers. We noticed that with `Macrostomum`, the `DAPI` channel didn't perfrom so well because of the outliers - hence, we switched to `Phalloidin` for detections and PCA.
 
 - To get a consistent detection ogf head, we tried some algorithms - but what worked the best finally was using the intensity at detections. We use the center plane at the specimen center and compare the intensities on the left and right (this shoudl correspond to the AP-axis) and should gve a bias along all bilaterians. Note that for `echinoplana`, the pharynx lies closer to the trunk while for the `macrostomum`, it is closer to the head, hence the algorithm is flipped but consistent. Also, it seems to work with DAPI in `echnioplana`.
 
